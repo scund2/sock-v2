@@ -1,1 +1,1 @@
-web: java SockV2/Main
+web: java Main
