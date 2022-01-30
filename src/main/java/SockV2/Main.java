@@ -21,7 +21,7 @@ public class Main extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event){
         if(event.getMessage().getContentRaw().equals("!안녕")){
-            event.getChannel().sendMessage("안녕하신가").queue();
+            event.getChannel().sendMessage("안녕하신가.").queue();
         }
     }
 }

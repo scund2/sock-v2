@@ -1,0 +1,10 @@
+heroku
+Java 1.8
+gitHub Desktop
+###
+
+https://dashboard.heroku.com/apps/scund2-v2
+
+
+server 로그:
+heroku logs --tail -a scund2-v2
