@@ -25,7 +25,7 @@ public class TestMain {
         // 받은 메세지 내용이 !ping이라면
         if (event.getMessage().getContentRaw().equals("!ping")) {
             // pong라는 내용을 보낸다.
-            event.getChannel().sendMessage("pong!").queue();
+            //event.getChannel().sendMessage("pong!").queue();
         }
     }
 }
