@@ -34,6 +34,11 @@ public class Main {
 		} catch (IllegalArgumentException e) {
 			LOG.error("No token was entered.");
 		} 
+
+		JDABuilder jb = new JDABuilder(AccountType.BOT);
+		jb.setAutoReconnect(true);
+		jb.setStatus(OnlineStatus.DO_NOT_DISTURB);
+		jb.setToken("OTM3MjE4NDM4NDUwMDAzOTc4.YfYisA.LXsSOBfi9pcDaLJ8a_YkSRPeWXA");
 	}
 	
 	private static JSONObject readConfig() throws IOException {
