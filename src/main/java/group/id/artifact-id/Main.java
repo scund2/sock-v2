@@ -33,12 +33,9 @@ public class Main {
 			LOG.error("Cannot login - make sure the token is correct");
 		} catch (IllegalArgumentException e) {
 			LOG.error("No token was entered.");
-		} 
+		}
 
-		JDABuilder jb = new JDABuilder(AccountType.BOT);
-		jb.setAutoReconnect(true);
-		jb.setStatus(OnlineStatus.DO_NOT_DISTURB);
-		jb.setToken("OTM3MjE4NDM4NDUwMDAzOTc4.YfYisA.LXsSOBfi9pcDaLJ8a_YkSRPeWXA");
+		JDABuilder builder = JDABuilder.createDefault(args[0]);
 	}
 	
 	private static JSONObject readConfig() throws IOException {
