@@ -22,6 +22,7 @@ public class Main {
 	private static Logger LOG=LoggerFactory.getLogger(Main.class);
 	
 	public static void main(String[] args) {
+		LOG.info("test only");
 		try {
 			JSONObject json=readConfig();
 			start(json.getString("OTM3MjE4NDM4NDUwMDAzOTc4.YfYisA.LXsSOBfi9pcDaLJ8a_YkSRPeWXA"), json.getString("!"));
@@ -34,8 +35,6 @@ public class Main {
 		} catch (IllegalArgumentException e) {
 			LOG.error("No token was entered.");
 		}
-
-		JDABuilder builder = JDABuilder.createDefault(args[0]);
 	}
 	
 	private static JSONObject readConfig() throws IOException {
