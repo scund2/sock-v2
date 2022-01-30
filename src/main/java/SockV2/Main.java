@@ -13,7 +13,7 @@ public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
         jda = JDABuilder.createDefault("OTM3MjE4NDM4NDUwMDAzOTc4.YfYisA.LXsSOBfi9pcDaLJ8a_YkSRPeWXA").build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        //jda.getPresence().setActivity(Activity.playing("말살"));
+        jda.getPresence().setActivity(Activity.playing("강화"));
 
         jda.addEventListener(new Main());
     }
@@ -21,7 +21,19 @@ public class Main extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event){
         if(event.getMessage().getContentRaw().equals("!안녕")){
-            event.getChannel().sendMessage("안녕하신가.").queue();
+
+            int rand = (int)(Math.random()*100) + 1;
+
+            if(rand < 20)
+                event.getChannel().sendMessage("안녕하신가").queue();
+            else if(rand < 40)
+                event.getChannel().sendMessage("여어").queue();
+            else if(rand < 60)
+                event.getChannel().sendMessage("거기안녕").queue();
+            else if(rand < 99)
+                event.getChannel().sendMessage("반갑다 좆간").queue();
+            else if(rand == 100)
+                event.getChannel().sendMessage("안녕하십쌉싸리와용").queue();
         }
     }
 }
