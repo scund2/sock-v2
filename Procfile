@@ -1,1 +1,1 @@
-java -Dserver.port=$PORT $JAVA_OPTS SockV2.Main
+web: java -cp target/classes/:target/dependency/* SockV2.Main
