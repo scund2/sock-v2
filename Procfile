@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/dependency/* java.SockV2.Main
+java -cp target/classes/:target/dependency/* SockV2.Main
