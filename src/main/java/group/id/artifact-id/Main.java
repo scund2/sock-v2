@@ -24,7 +24,7 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			JSONObject json=readConfig();
-			start(json.getString("token"), json.getString("prefix"));
+			start(json.getString("OTM3MjE4NDM4NDUwMDAzOTc4.YfYisA.LXsSOBfi9pcDaLJ8a_YkSRPeWXA"), json.getString("!"));
 		} catch (IOException e) {
 			LOG.error("Cannot read config.json",e);
 		} catch (JSONException e) {
