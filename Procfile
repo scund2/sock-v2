@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/dependency/* SockV2.Main
+main: sh target/bin/main
