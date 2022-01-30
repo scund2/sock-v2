@@ -11,7 +11,7 @@ import javax.security.auth.login.LoginException;
 public class Main extends ListenerAdapter {
     public static JDA jda;
     public static void main(String[] args) throws LoginException {
-        jda = JDABuilder.createDefault("OTM3MjE4NDM4NDUwMDAzOTc4.YfYisA.LXsSOBfi9pcDaLJ8a_YkSRPeWXA").build();
+        jda = JDABuilder.createDefault("DISCORD_TOKEN").build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setActivity(Activity.playing("강화"));
 
