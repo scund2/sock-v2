@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* SockV2.Main
+java $JAVA_OPTS -cp target/classes:target/dependency/* SockV2.Main
