@@ -74,6 +74,9 @@ public class Main extends ListenerAdapter {
                         e.printStackTrace();
                     }
                     break;
+                case "죽어" : // 죽어
+                    KillingWord.Make(event, combineText(splitMsg));
+                    break;
             }
         }
     }
