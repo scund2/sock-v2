@@ -34,7 +34,7 @@ public class Main extends ListenerAdapter {
     @Override
     public void onReady(ReadyEvent event){
         for (String list: defaultChannels) {
-            jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010").queue();
+            jda.getTextChannelById(list).sendMessage("현재 빌드: " + "GRADLE_TASK").queue();
         }
     }
 
