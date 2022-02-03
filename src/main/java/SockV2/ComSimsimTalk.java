@@ -34,8 +34,6 @@ public class ComSimsimTalk {
 
         JSONObject jsonObject = new JSONObject(resp);
 
-        event.getChannel().sendMessage(jsonObject.get("result").toString()).queue();
-
         if(Objects.equals(jsonObject.get("result").toString(), "100"))
             event.getChannel().sendMessage(jsonObject.get("response").toString()).queue();
         else
