@@ -8,6 +8,8 @@ import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main extends ListenerAdapter {
     public static JDA jda;
@@ -46,16 +48,28 @@ public class Main extends ListenerAdapter {
                 return;
 
             // 명령어 및 옵션 감지
-            String[] splitMsg = event.getMessage().getContentRaw().substring(1).split(" ");
+            ArrayList<String> splitMsg = new ArrayList<String>(Arrays.asList(event.getMessage().getContentRaw().substring(1).split(" ")));
 
-            switch (splitMsg[0]) {
-                case "안녕" :
+            switch (splitMsg.get(0)) {
+                case "안녕" : // 안녕
                     ComSayHello.Hello(event);
                     break;
-                case "대화" :
-
+                case "대화" : // 대화
+                    splitMsg.remove(0);
+                    ComSimsimTalk.Talk(event, combineText(splitMsg));
                     break;
             }
         }
+    }
+
+    String combineText(ArrayList<String> arr) {
+        String result = "";
+        for (String list: arr) {
+            result += list + " ";
+        }
+
+        result = result.substring(0, result.length()-1);
+
+        return result;
     }
 }
