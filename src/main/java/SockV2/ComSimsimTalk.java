@@ -42,7 +42,6 @@ public class ComSimsimTalk {
         */
 
         event.getChannel().sendMessage("테스트: " + msg).queue();
-        event.getChannel().sendMessage("테스트2: " + msg).queue();
         event.getChannel().sendMessage(resp).queue();
         event.getChannel().sendMessage("테스트: 완료").queue();
 

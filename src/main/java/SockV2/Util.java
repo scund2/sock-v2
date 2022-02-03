@@ -69,7 +69,7 @@ public class Util {
             //--------------------------
             //   Response Code
             //--------------------------
-            //http.getResponseCode();
+            http.getResponseCode();
 
 
             //--------------------------
