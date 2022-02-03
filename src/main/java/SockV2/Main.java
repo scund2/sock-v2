@@ -10,12 +10,14 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main extends ListenerAdapter {
     public static JDA jda;
 
     // 접두사
     public static char prefixText;
+    public static String buildToken;
     public static String[] defaultChannels = {"663436024218779652", "547033439417794560"};
 
     public static void main(String[] args) throws LoginException {
@@ -35,8 +37,17 @@ public class Main extends ListenerAdapter {
 
     @Override
     public void onReady(ReadyEvent event){
+
+        byte[] arr = new byte[8];
+        StringBuilder sb = new StringBuilder();
+        new Random().nextBytes(arr);
+        for (byte temp : arr) {
+            sb.append(String.format("%02x", temp));
+        }
+
+        buildToken = sb.toString();
         for (String list: defaultChannels) {
-            jda.getTextChannelById(list).sendMessage("현재 빌드: " + System.getenv("GRADLE_TASK")).queue();
+            jda.getTextChannelById(list).sendMessage("build token: " + buildToken).queue();
         }
     }
 

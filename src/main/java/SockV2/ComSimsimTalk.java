@@ -30,7 +30,7 @@ public class ComSimsimTalk {
         msg	        String	Result msg(Description of result code)
          */
 
-        event.getChannel().sendMessage("테스트: ").queue();
+        event.getChannel().sendMessage("테스트: " + resp).queue();
         event.getChannel().sendMessage(resp).queue();
 
         JSONObject jsonObject = new JSONObject(resp);
