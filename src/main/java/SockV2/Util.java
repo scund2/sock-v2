@@ -25,7 +25,7 @@ public class Util {
         try {
             //   URL 설정하고 접속하기
             URL url = new URL(pURL); // URL 설정
-
+            System.out.println(pURL + " ->>>> " + url);
             HttpURLConnection http = (HttpURLConnection) url.openConnection(); // 접속
             //--------------------------
             //   전송 모드 설정 - 기본적인 설정

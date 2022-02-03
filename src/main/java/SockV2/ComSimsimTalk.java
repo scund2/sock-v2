@@ -10,24 +10,18 @@ public class ComSimsimTalk {
     // 심심이
     // http://developer.simsimi.com/api
 
-    private static boolean postMod = true;
     private static String resp = "";
 
     public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
-        if(postMod) { // POST
-            String url = "http://api.simsimi.com/request.p";
+        String url = "http://api.simsimi.com/request.p";
 
-            HashMap<String, String> param = new HashMap<String, String>();
-            param.put("key", System.getenv("SIMSIM_TOKEN"));
-            param.put("text", msg);
-            param.put("lc", "ko");
-            param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
-            resp = Util.postRequest(url, param);
-        }
-        else { // GET
-            // 미구현됨
-        }
+        HashMap<String, String> param = new HashMap<String, String>();
+        param.put("key", System.getenv("SIMSIM_TOKEN"));
+        param.put("text", msg);
+        param.put("lc", "ko");
+        param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
+        resp = Util.postRequest(url, param);
 
         /*
         Response elements : JSON
