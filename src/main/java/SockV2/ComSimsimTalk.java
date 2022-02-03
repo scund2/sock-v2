@@ -14,7 +14,7 @@ public class ComSimsimTalk {
 
     public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
-        String url = "https://httpbin.org/post";
+        String url = "http://api.simsimi.com/request.p";
 
         resp = Util.getRequest(url + "?key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0");
 
