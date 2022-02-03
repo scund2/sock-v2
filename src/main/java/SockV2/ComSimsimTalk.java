@@ -15,8 +15,8 @@ public class ComSimsimTalk {
 
     public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
-        String url = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
-        String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
+        String url = "http://api.simsimi.com/request.p";
+        String urlParameters = "key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0";
         resp = Util.sendPost(url, urlParameters);
 
         /*

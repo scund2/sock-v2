@@ -96,7 +96,7 @@ public class Util {
     // HTTP POST request
     public static String sendPost(String targetUrl, String parameters) throws Exception {
         URL url = new URL(targetUrl);
-        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         con.setRequestMethod("POST"); // HTTP POST 메소드 설정
         con.setRequestProperty("User-Agent", USER_AGENT);
