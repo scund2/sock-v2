@@ -34,7 +34,7 @@ public class Util {
             http.setDoInput(true); // 서버에서 읽기 모드 지정
             http.setDoOutput(true); // 서버로 쓰기 모드 지정
             http.setRequestMethod("POST"); // 전송 방식은 POST
-            http.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+            http.setRequestProperty("User-Agent","Mozilla/5.0 (compatible) ");
             http.setRequestProperty("Accept","*/*");
 
 
@@ -77,6 +77,7 @@ public class Util {
             //--------------------------
             //   서버에서 전송받기
             //--------------------------
+            System.out.println("-----------------------------------------------------");
             System.out.println("0001 : "+ http.getInputStream());
             InputStreamReader tmp = new InputStreamReader(http.getInputStream(), StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(tmp);
