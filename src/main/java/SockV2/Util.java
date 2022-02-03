@@ -34,6 +34,8 @@ public class Util {
             http.setDoInput(true); // 서버에서 읽기 모드 지정
             http.setDoOutput(true); // 서버로 쓰기 모드 지정
             http.setRequestMethod("POST"); // 전송 방식은 POST
+            http.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+            http.setRequestProperty("Accept","*/*");
 
 
 
