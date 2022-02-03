@@ -6,17 +6,25 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.HashMap;
 
 public class ComSimsimTalk {
+
+    // 심심이
+    // http://developer.simsimi.com/api
+
+    private static boolean postMod = true;
+    private static String resp = "";
+
     public static void Talk(MessageReceivedEvent event, String msg){
 
-        // 심심이 기반
-        String url = "http://api.simsimi.com/request.p";
+        if(postMod) {
+            String url = "http://api.simsimi.com/request.p";
 
-        HashMap<String, String> param = new HashMap<String, String>();
-        param.put("key", System.getenv("SIMSIM_TOKEN"));
-        param.put("text", msg);
-        param.put("lc", "ko");
-        param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
-        String resp = Util.postRequest(url, param);
+            HashMap<String, String> param = new HashMap<String, String>();
+            param.put("key", System.getenv("SIMSIM_TOKEN"));
+            param.put("text", msg);
+            param.put("lc", "ko");
+            param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
+            resp = Util.postRequest(url, param);
+        }
 
         /*
         Response elements : JSON
@@ -32,6 +40,7 @@ public class ComSimsimTalk {
 
         event.getChannel().sendMessage("테스트: " + resp).queue();
         event.getChannel().sendMessage(resp).queue();
+        event.getChannel().sendMessage("테스트: 완료").queue();
 
         JSONObject jsonObject = new JSONObject(resp);
 
