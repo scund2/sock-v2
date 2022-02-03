@@ -78,7 +78,7 @@ public class Util {
             //   서버에서 전송받기
             //--------------------------
             System.out.println("-----------------------------------------------------");
-            System.out.println(http.getResponseCode());
+            System.out.println(http.getResponseCode() + ": " + http.getErrorStream());
             System.out.println("0001 : "+ http.getInputStream());
             InputStreamReader tmp = new InputStreamReader(http.getInputStream(), StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(tmp);
