@@ -56,7 +56,6 @@ public class Main extends ListenerAdapter {
                     break;
                 case "대화" : // 대화
                     splitMsg.remove(0);
-                    event.getChannel().sendMessage(combineText(splitMsg)).queue();
                     ComSimsimTalk.Talk(event, combineText(splitMsg));
                     break;
             }

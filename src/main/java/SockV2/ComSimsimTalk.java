@@ -15,7 +15,8 @@ public class ComSimsimTalk {
         param.put("key", System.getenv("SIMSIM_TOKEN"));
         param.put("text", msg);
         param.put("lc", "ko");
-        //param.put("ft", 1.0); // 나쁜말 on/off 쓸모없는기능
+        param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
+        String resp = Util.postRequest(url, param);
 
         /*
         Response elements : JSON
@@ -29,7 +30,9 @@ public class ComSimsimTalk {
         msg	        String	Result msg(Description of result code)
          */
 
-        String resp = Util.postRequest(url, param);
+        event.getChannel().sendMessage(resp).queue();
+
+
         JSONObject jsonObject = new JSONObject(resp);
 
         if(jsonObject.get("result") == "100") {
