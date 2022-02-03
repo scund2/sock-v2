@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
@@ -27,16 +28,25 @@ public class Main extends ListenerAdapter {
         prefixText = '!';
 
         // Init end
+
+        TextChannel textChannel = jda.getTextChannelById("663436024218779652");
+        if(textChannel.canTalk()) {
+            textChannel.sendMessage("현재 빌드: 000A00010").queue();
+        }
+/*
         for (String list: defaultChannels) {
             jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010").queue();
+
         }
+        
+ */
     }
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event){
         // 접두사 일치
         if(event.getMessage().getContentRaw().charAt(0) == prefixText) {
-            if(event.getMessage().getContentRaw().charAt(1) == prefixText || event.getMessage().getContentRaw().charAt(1) == ' ')
+            if(event.getMessage().getContentRaw().charAt(1) == prefixText || event.getMessage().getContentRaw().charAt(1) == ' ' || event.getAuthor().isBot())
                 return;
 
             // 명령어 및 옵션 감지
