@@ -14,9 +14,10 @@ public class ComSimsimTalk {
 
     public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
+        // Ex) http://api.simsimi.com/request.p?key=your_paid_key&lc=en&ft=1.0&text=hi
         String url = "http://api.simsimi.com/request.p";
-
-        resp = Util.getRequest(url + "?key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0");
+        String fullUrl = url + "?key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0";
+        resp = Util.getRequest(fullUrl);
 
         /*
         Response elements : JSON
@@ -30,7 +31,7 @@ public class ComSimsimTalk {
         msg	        String	Result msg(Description of result code)
         */
 
-        event.getChannel().sendMessage("테스트: " + msg).queue();
+        event.getChannel().sendMessage("테스트: " + fullUrl).queue();
         event.getChannel().sendMessage(resp).queue();
         event.getChannel().sendMessage("테스트: 완료").queue();
 
