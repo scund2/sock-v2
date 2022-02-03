@@ -107,11 +107,10 @@ public class Util {
         http.setDoOutput(true); // 서버로 쓰기 모드 지정
         http.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
         http.setRequestProperty("Accept","*/*");
+        http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 
         int responseCode = http.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-
-        Thread.sleep(1000);
 
         String inputLine;
         StringBuffer response = new StringBuffer();
