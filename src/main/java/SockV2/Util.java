@@ -61,9 +61,7 @@ public class Util {
             }
 
             OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), StandardCharsets.UTF_8);
-            System.out.println("0001 : "+ outStream);
             PrintWriter writer = new PrintWriter(outStream);
-            System.out.println("0002: "+ writer);
             writer.write(buffer.toString());
             writer.flush();
 
@@ -77,6 +75,7 @@ public class Util {
             //--------------------------
             //   서버에서 전송받기
             //--------------------------
+            System.out.println("0001 : "+ http.getInputStream());
             InputStreamReader tmp = new InputStreamReader(http.getInputStream(), StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(tmp);
             StringBuilder builder = new StringBuilder();
