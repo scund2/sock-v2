@@ -75,6 +75,7 @@ public class Main extends ListenerAdapter {
                     }
                     break;
                 case "죽어" : // 죽어
+                    splitMsg.remove(0);
                     KillingWord.Make(event, combineText(splitMsg));
                     break;
             }

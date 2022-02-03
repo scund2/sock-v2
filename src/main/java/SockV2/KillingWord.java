@@ -31,6 +31,6 @@ public class KillingWord {
         if(rand.nextInt(10) > 2)
             result += Util.randomArray(killingWhy) + " ";
 
-        event.getChannel().sendMessage(Util.josa(name, "은", "는") + " " + result + Util.randomArray(killingFinal)).queue();
+        event.getChannel().sendMessage(":skull_crossbones:  " + Util.josa(name, "은", "는") + " " + result + Util.randomArray(killingFinal)).queue();
     }
 }
