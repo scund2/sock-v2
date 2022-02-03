@@ -31,15 +31,14 @@ public class ComSimsimTalk {
         msg	        String	Result msg(Description of result code)
         */
 
-        event.getChannel().sendMessage("테스트: " + fullUrl).queue();
         event.getChannel().sendMessage(resp).queue();
-        event.getChannel().sendMessage("테스트: 완료").queue();
 
         JSONObject jsonObject = new JSONObject(resp);
 
-        if(jsonObject.get("result") == "100") {
-            event.getChannel().sendMessage(jsonObject.get("msg").toString()).queue();
-        }
+        event.getChannel().sendMessage((String)jsonObject.get("result")).queue();
+
+        if((String)jsonObject.get("result") == "100")
+            event.getChannel().sendMessage(jsonObject.get("response").toString()).queue();
         else
             event.getChannel().sendMessage("심심이: 직무유기").queue();
 
