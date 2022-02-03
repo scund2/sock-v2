@@ -2,22 +2,23 @@ package SockV2;
 
 // 공통 유틸 Class
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+
+import static net.dv8tion.jda.internal.requests.Requester.USER_AGENT;
 
 public class Util {
 
     /**
      * @param pURL : 요청 URL
      * @param pList : 파라미터 객체 (HashMap<String,String>)
-     *
-     * Created by 닢향
-     * http://niphyang.tistory.com
      */
     public static String postRequest(String pURL, HashMap< String, String > pList) {
 
@@ -48,21 +49,20 @@ public class Util {
             //--------------------------
             //   서버로 값 전송
             //--------------------------
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
 
             //HashMap으로 전달받은 파라미터가 null이 아닌경우 버퍼에 넣어준다
             if (pList != null) {
 
-                Set key = pList.keySet();
+                Set<String> key = pList.keySet();
 
-                for (Iterator iterator = key.iterator(); iterator.hasNext();) {
-                    String keyName = (String) iterator.next();
+                for (String keyName : key) {
                     String valueName = pList.get(keyName);
                     buffer.append(keyName).append("=").append(valueName);
                 }
             }
 
-            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), StandardCharsets.UTF_8);
             PrintWriter writer = new PrintWriter(outStream);
             writer.write(buffer.toString());
             writer.flush();
@@ -77,21 +77,49 @@ public class Util {
             //--------------------------
             //   서버에서 전송받기
             //--------------------------
-            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(tmp);
             StringBuilder builder = new StringBuilder();
             String str;
             while ((str = reader.readLine()) != null) {
-                builder.append(str + "\n");
+                builder.append(str).append("\n");
             }
             myResult = builder.toString();
             return myResult;
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return myResult;
     }
+
+    // HTTP POST request
+    public static String sendPost(String targetUrl, String parameters) throws Exception {
+        URL url = new URL(targetUrl);
+        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+
+        con.setRequestMethod("POST"); // HTTP POST 메소드 설정
+        con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setDoOutput(true); // POST 파라미터 전달을 위한 설정
+
+        // Send post request
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(parameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+
+        in.close();
+
+        return response.toString();
+    }
+
 }

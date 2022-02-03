@@ -13,9 +13,14 @@ public class ComSimsimTalk {
     private static boolean postMod = true;
     private static String resp = "";
 
-    public static void Talk(MessageReceivedEvent event, String msg){
+    public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
-        if(postMod) {
+        String url = "http://api.simsimi.com/request.p";
+        String urlParameters = "key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0";
+        resp = Util.sendPost(url, urlParameters);
+
+        /*
+        if(postMod) { // POST
             String url = "http://api.simsimi.com/request.p";
 
             HashMap<String, String> param = new HashMap<String, String>();
@@ -25,8 +30,11 @@ public class ComSimsimTalk {
             param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
             resp = Util.postRequest(url, param);
         }
+        else { // GET
+            // 미구현됨
+        }
 
-        /*
+
         Response elements : JSON
         result      Integer	100-OK.
                             400-Bad Request.
@@ -38,7 +46,7 @@ public class ComSimsimTalk {
         msg	        String	Result msg(Description of result code)
          */
 
-        event.getChannel().sendMessage("테스트: " + resp).queue();
+        event.getChannel().sendMessage("테스트: " + msg).queue();
         event.getChannel().sendMessage(resp).queue();
         event.getChannel().sendMessage("테스트: 완료").queue();
 

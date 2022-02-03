@@ -67,7 +67,11 @@ public class Main extends ListenerAdapter {
                     break;
                 case "대화" : // 대화
                     splitMsg.remove(0);
-                    ComSimsimTalk.Talk(event, combineText(splitMsg));
+                    try {
+                        ComSimsimTalk.Talk(event, combineText(splitMsg));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
