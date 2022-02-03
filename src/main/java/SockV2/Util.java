@@ -102,6 +102,9 @@ public class Util {
 
         http.setRequestMethod("GET"); // optional default is GET
         http.setRequestProperty("User-Agent", USER_AGENT); // add request header
+        http.setDefaultUseCaches(false);
+        http.setDoInput(true); // 서버에서 읽기 모드 지정
+        http.setDoOutput(true); // 서버로 쓰기 모드 지정
 
         int responseCode = http.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
