@@ -7,6 +7,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -121,6 +122,10 @@ public class Util {
         in.close();
 
         return response.toString();
+    }
+
+    public static String encodeURL(String urlText) throws UnsupportedEncodingException {
+        return URLEncoder.encode(urlText, "UTF-8");
     }
 
 }

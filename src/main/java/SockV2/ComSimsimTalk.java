@@ -17,7 +17,7 @@ public class ComSimsimTalk {
         // Ex) http://api.simsimi.com/request.p?key=your_paid_key&lc=en&ft=1.0&text=hi
         String url = "http://api.simsimi.com/request.p";
         String fullUrl = url + "?key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0";
-        resp = Util.getRequest(fullUrl);
+        resp = Util.getRequest(Util.encodeURL(fullUrl));
 
         /*
         Response elements : JSON
