@@ -10,17 +10,40 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends ListenerAdapter {
     public static JDA jda;
+
+    // 접두사
+    public static char prefixText;
+    public static String[] defaultChannels = {"663436024218779652", "547033439417794560"};
+
     public static void main(String[] args) throws LoginException {
         // DISCORD_TOKEN
         jda = JDABuilder.createDefault(System.getenv("DISCORD_TOKEN")).build();
-        jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        jda.getPresence().setActivity(Activity.playing("강화"));
+        jda.getPresence().setStatus(OnlineStatus.ONLINE); // 대기 상태
+        jda.getPresence().setActivity(Activity.playing("강화")); // 상테 msg
 
         jda.addEventListener(new Main());
+
+        // Init
+        prefixText = '!';
+
+        // Init end
+        for (String list: defaultChannels) {
+            jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010");
+        }
     }
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event){
+        // 접두사 일치
+        if(event.getMessage().getContentRaw().charAt(0) == prefixText) {
+            if(event.getMessage().getContentRaw().charAt(1) == prefixText || event.getMessage().getContentRaw().charAt(1) == ' ')
+                return;
+
+            // 명령어 및 옵션 감지
+            String[] splitMsg = event.getMessage().getContentRaw().substring(1).split(" ");
+            
+        }
+
         if(event.getMessage().getContentRaw().equals("!안녕")){
 
             int rand = (int)(Math.random()*100) + 1;
