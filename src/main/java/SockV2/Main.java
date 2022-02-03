@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
@@ -32,6 +32,13 @@ public class Main extends ListenerAdapter {
     }
 
     @Override
+    public void onReady(ReadyEvent event){
+        for (String list: defaultChannels) {
+            jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010").queue();
+        }
+    }
+
+    @Override
     public void onMessageReceived(MessageReceivedEvent event){
         // 접두사 일치
         if(event.getMessage().getContentRaw().charAt(0) == prefixText) {
@@ -41,12 +48,6 @@ public class Main extends ListenerAdapter {
             // 명령어 및 옵션 감지
             String[] splitMsg = event.getMessage().getContentRaw().substring(1).split(" ");
 
-        }
-
-        if(event.getMessage().getContentRaw().equals("!빌드")){
-            for (String list: defaultChannels) {
-                jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010").queue();
-            }
         }
 
         if(event.getMessage().getContentRaw().equals("!안녕")){
