@@ -25,14 +25,14 @@ public class Util {
         try {
             //   URL 설정하고 접속하기
             URL url = new URL(pURL); // URL 설정
-            System.out.println(pURL + " ->>>> " + url);
+
             HttpURLConnection http = (HttpURLConnection) url.openConnection(); // 접속
             //--------------------------
             //   전송 모드 설정 - 기본적인 설정
             //--------------------------
             http.setDefaultUseCaches(false);
             http.setDoInput(true); // 서버에서 읽기 모드 지정
-            http.setDoOutput(true); // 서버로 쓰기 모드 지정
+            //http.setDoOutput(true); // 서버로 쓰기 모드 지정
             http.setRequestMethod("POST"); // 전송 방식은 POST
             http.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
             http.setRequestProperty("Accept","*/*");

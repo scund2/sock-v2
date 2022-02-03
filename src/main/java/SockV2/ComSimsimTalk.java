@@ -14,7 +14,7 @@ public class ComSimsimTalk {
 
     public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
-        String url = "http://api.simsimi.com/request";
+        String url = "http://api.simsimi.com/request.p";
 
         HashMap<String, String> param = new HashMap<String, String>();
         param.put("key", System.getenv("SIMSIM_TOKEN"));
