@@ -28,7 +28,7 @@ public class Main extends ListenerAdapter {
 
         // Init end
         for (String list: defaultChannels) {
-            jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010");
+            jda.getTextChannelById(list).sendMessage("현재 빌드: 000A00010").queue();
         }
     }
 
@@ -41,7 +41,7 @@ public class Main extends ListenerAdapter {
 
             // 명령어 및 옵션 감지
             String[] splitMsg = event.getMessage().getContentRaw().substring(1).split(" ");
-            
+
         }
 
         if(event.getMessage().getContentRaw().equals("!안녕")){
