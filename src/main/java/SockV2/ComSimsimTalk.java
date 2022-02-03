@@ -9,7 +9,6 @@ public class ComSimsimTalk {
     public static void Talk(MessageReceivedEvent event, String msg){
 
         // 심심이 기반
-
         String url = "http://api.simsimi.com/request.p";
 
         HashMap<String, String> param = new HashMap<String, String>();
