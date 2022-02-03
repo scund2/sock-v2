@@ -16,12 +16,7 @@ public class ComSimsimTalk {
 
         String url = "https://httpbin.org/post";
 
-        HashMap<String, String> param = new HashMap<String, String>();
-        param.put("key", System.getenv("SIMSIM_TOKEN"));
-        param.put("text", msg);
-        param.put("lc", "ko");
-        param.put("ft", "0.0"); // 나쁜말 on/off 쓸모없는기능
-        resp = Util.postRequest(url, param);
+        resp = Util.getRequest(url + "?key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0");
 
         /*
         Response elements : JSON

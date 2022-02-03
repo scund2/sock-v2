@@ -12,13 +12,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
+import static net.dv8tion.jda.internal.requests.Requester.USER_AGENT;
+
 public class Util {
 
     /**
+     * POST 통신
      * @param pURL : 요청 URL
      * @param pList : 파라미터 객체 (HashMap<String,String>)
      */
-    public static String postRequest(String pURL, HashMap< String, String > pList) {
+    public static String postRequest(String pURL, HashMap<String, String> pList) {
 
         String myResult = "";
 
@@ -36,8 +39,6 @@ public class Util {
             http.setRequestMethod("POST"); // 전송 방식은 POST
             http.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
             http.setRequestProperty("Accept","*/*");
-
-
 
             //--------------------------
             // 헤더 세팅
@@ -67,27 +68,11 @@ public class Util {
             writer.write(buffer.toString());
             writer.flush();
 
-
-            //--------------------------
-            //   Response Code
-            //--------------------------
-            //http.getResponseCode();
-
-
             //--------------------------
             //   서버에서 전송받기
             //--------------------------
             System.out.println("-----------------------------------------------------");
-            System.out.println(http.getResponseCode());
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(http.getErrorStream()));
-            String str2 = "";
-            while ((str2 = br.readLine()) != null) {
-                System.out.println("ErrMsg: " + str2);
-            }
-
-
-            System.out.println("0001 : "+ http.getInputStream());
             InputStreamReader tmp = new InputStreamReader(http.getInputStream(), StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(tmp);
             StringBuilder builder = new StringBuilder();
@@ -101,6 +86,35 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return myResult;
     }
+
+    /**
+     * GET 통신
+     * @param pURL : 요청 URL 및 Param
+     */
+
+    public static String getRequest(String pURL) throws Exception {
+
+        URL url = new URL(pURL);
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+
+        http.setRequestMethod("GET"); // optional default is GET
+        http.setRequestProperty("User-Agent", USER_AGENT); // add request header
+
+        int responseCode = http.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        return response.toString();
+    }
+
 }
