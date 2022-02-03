@@ -111,6 +111,8 @@ public class Util {
         int responseCode = http.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
 
+        Thread.sleep(1000);
+
         String inputLine;
         StringBuffer response = new StringBuffer();
 
