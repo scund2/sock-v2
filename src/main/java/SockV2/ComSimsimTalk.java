@@ -15,11 +15,6 @@ public class ComSimsimTalk {
 
     public static void Talk(MessageReceivedEvent event, String msg) throws Exception {
 
-        String url = "http://api.simsimi.com/request.p";
-        String urlParameters = "key=" + System.getenv("SIMSIM_TOKEN") + "&text=" + msg + "&lc=ko&ft=0.0";
-        resp = Util.sendPost(url, urlParameters);
-
-        /*
         if(postMod) { // POST
             String url = "http://api.simsimi.com/request.p";
 
@@ -34,7 +29,7 @@ public class ComSimsimTalk {
             // 미구현됨
         }
 
-
+        /*
         Response elements : JSON
         result      Integer	100-OK.
                             400-Bad Request.
@@ -44,7 +39,7 @@ public class ComSimsimTalk {
         id	        Integer	Response id. (you can get only if returning result is 100)
         response	String	Response message(you can get only if returning result is 100)
         msg	        String	Result msg(Description of result code)
-         */
+        */
 
         event.getChannel().sendMessage("테스트: " + msg).queue();
         event.getChannel().sendMessage(resp).queue();

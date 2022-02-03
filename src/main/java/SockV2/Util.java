@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import static net.dv8tion.jda.internal.requests.Requester.USER_AGENT;
-
 public class Util {
 
     /**
@@ -92,34 +90,4 @@ public class Util {
         }
         return myResult;
     }
-
-    // HTTP POST request
-    public static String sendPost(String targetUrl, String parameters) throws Exception {
-        URL url = new URL(targetUrl);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-        con.setRequestMethod("POST"); // HTTP POST 메소드 설정
-        con.setRequestProperty("User-Agent", USER_AGENT);
-        con.setDoOutput(true); // POST 파라미터 전달을 위한 설정
-
-        // Send post request
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(parameters);
-        wr.flush();
-        wr.close();
-
-        int responseCode = con.getResponseCode();
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-        String inputLine;
-        StringBuilder response = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-
-        in.close();
-
-        return response.toString();
-    }
-
 }
