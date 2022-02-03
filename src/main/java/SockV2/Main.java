@@ -48,22 +48,14 @@ public class Main extends ListenerAdapter {
             // 명령어 및 옵션 감지
             String[] splitMsg = event.getMessage().getContentRaw().substring(1).split(" ");
 
-        }
+            switch (splitMsg[0]) {
+                case "안녕" :
+                    ComSayHello.Hello(event);
+                    break;
+                case "대화" :
 
-        if(event.getMessage().getContentRaw().equals("!안녕")){
-
-            int rand = (int)(Math.random()*100) + 1;
-
-            if(rand < 20)
-                event.getChannel().sendMessage("안녕하신가").queue();
-            else if(rand < 40)
-                event.getChannel().sendMessage("여어").queue();
-            else if(rand < 60)
-                event.getChannel().sendMessage("거기안녕").queue();
-            else if(rand < 99)
-                event.getChannel().sendMessage("반갑다 좆간").queue();
-            else if(rand == 100)
-                event.getChannel().sendMessage("안녕하십쌉싸리와용").queue();
+                    break;
+            }
         }
     }
 }
