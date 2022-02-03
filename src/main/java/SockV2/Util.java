@@ -61,7 +61,9 @@ public class Util {
             }
 
             OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), StandardCharsets.UTF_8);
+            System.out.println("0001 : "+ outStream);
             PrintWriter writer = new PrintWriter(outStream);
+            System.out.println("0002: "+ writer);
             writer.write(buffer.toString());
             writer.flush();
 
@@ -69,7 +71,7 @@ public class Util {
             //--------------------------
             //   Response Code
             //--------------------------
-            http.getResponseCode();
+            //http.getResponseCode();
 
 
             //--------------------------
