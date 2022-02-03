@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ComSimsimTalk {
 
@@ -35,7 +36,7 @@ public class ComSimsimTalk {
 
         event.getChannel().sendMessage(jsonObject.get("result").toString()).queue();
 
-        if(jsonObject.get("result").toString() == "100")
+        if(Objects.equals(jsonObject.get("result").toString(), "100"))
             event.getChannel().sendMessage(jsonObject.get("response").toString()).queue();
         else
             event.getChannel().sendMessage("심심이: 직무유기").queue();
