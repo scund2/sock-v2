@@ -37,7 +37,7 @@ public class ComSimsimTalk {
         if(Objects.equals(jsonObject.get("result").toString(), "100"))
             event.getChannel().sendMessage(":speaking_head: `" + jsonObject.get("response").toString() + "`").queue();
         else
-            event.getChannel().sendMessage("심심이: 직무유기").queue();
+            event.getChannel().sendMessage("⚠ 심심이: 직무유기").queue();
 
     }
 }
