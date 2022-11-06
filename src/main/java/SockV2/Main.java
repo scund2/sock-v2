@@ -18,8 +18,8 @@ public class Main extends ListenerAdapter {
     // 접두사
     public static char prefixText;
     public static String buildToken;
-    public static String[] defaultChannels = {"663436024218779652", "547033439417794560"};
-    //public static String[] defaultChannels = {"663436024218779652"};
+    //public static String[] defaultChannels = {"663436024218779652", "547033439417794560"};
+    public static String[] defaultChannels = {"663436024218779652"};
 
     public static void main(String[] args) throws LoginException {
         // DISCORD_TOKEN
@@ -48,7 +48,7 @@ public class Main extends ListenerAdapter {
 
         buildToken = sb.toString();
         for (String list: defaultChannels) {
-            jda.getTextChannelById(list).sendMessage("build token: " + buildToken).queue();
+            //jda.getTextChannelById(list).sendMessage("build token: " + buildToken).queue();
         }
     }
 
